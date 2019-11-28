@@ -1,0 +1,133 @@
+\hypertarget{classmysvm}{
+\section{mysvm Class Reference}
+\label{classmysvm}\index{mysvm@{mysvm}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmysvm_a24708823231bbfdc5c5d2bd911eca29c}{
+{\bfseries mysvm} (\hyperlink{class_donnees}{Donnees} \&app, \hyperlink{class_donnees}{Donnees} \&t)}
+\label{classmysvm_a24708823231bbfdc5c5d2bd911eca29c}
+
+\item 
+\hypertarget{classmysvm_a2a359f7916a750413655121cc9a6cf9d}{
+void \hyperlink{classmysvm_a2a359f7916a750413655121cc9a6cf9d}{preparer\_\-donnee\_\-apprentissage} (vector$<$ vector$<$ int $>$$>$ \&data\_\-class\_\-ref, vector$<$ vector$<$ int $>$$>$ \&outliers1\_\-data, vector$<$ vector$<$ int $>$$>$ \&outliers2\_\-data, vector$<$ vector$<$ int $>$$>$ \&outliers3\_\-data, int Total\_\-nb\_\-clusters, int nb\_\-image\_\-train, CvMat $\ast$, string Class\_\-ref)}
+\label{classmysvm_a2a359f7916a750413655121cc9a6cf9d}
+
+\begin{DoxyCompactList}\small\item\em preparer les donnees pour l'appresntissage compris les donnees et les classes \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a9e8618a8a9596f96852dbb1a23a0943f}{
+void {\bfseries preparer\_\-donnee\_\-apprentissage} (vector$<$ vector$<$ int $>$$>$ \&data\_\-class\_\-ref, vector$<$ vector$<$ int $>$$>$ \&outliers1\_\-data, CvMat $\ast$, string Class\_\-ref)}
+\label{classmysvm_a9e8618a8a9596f96852dbb1a23a0943f}
+
+\item 
+\hypertarget{classmysvm_a1509d40273024e88bf43d1dc9e0273ea}{
+void \hyperlink{classmysvm_a1509d40273024e88bf43d1dc9e0273ea}{preparer\_\-donnee\_\-apprentissage} (std::vector$<$ vector$<$ \hyperlink{classbins}{bins} $>$$>$ \&data\_\-class\_\-ref, std::vector$<$ vector$<$ \hyperlink{classbins}{bins} $>$$>$ \&outliers1\_\-data, std::vector$<$ vector$<$ \hyperlink{classbins}{bins} $>$$>$ \&outliers2\_\-data, std::vector$<$ vector$<$ \hyperlink{classbins}{bins} $>$$>$ \&outliers3\_\-data, int Total\_\-nb\_\-clusters, int nb\_\-image\_\-train, CvMat $\ast$train, string Class\_\-ref)}
+\label{classmysvm_a1509d40273024e88bf43d1dc9e0273ea}
+
+\begin{DoxyCompactList}\small\item\em prepare the data for the training \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a84b73e6b3f3187c14e2d5929ef601c9a}{
+void {\bfseries preparer\_\-classes} (int nb\_\-image\_\-train, CvMat $\ast$)}
+\label{classmysvm_a84b73e6b3f3187c14e2d5929ef601c9a}
+
+\item 
+\hypertarget{classmysvm_ab0f3cb8577a6a81856c9e54f0ff1c18d}{
+void \hyperlink{classmysvm_ab0f3cb8577a6a81856c9e54f0ff1c18d}{preparer\_\-classes} (int, int, CvMat $\ast$)}
+\label{classmysvm_ab0f3cb8577a6a81856c9e54f0ff1c18d}
+
+\begin{DoxyCompactList}\small\item\em preparer les classes \{ bike=1, cars=2,persons=3, motorbikes=4\} \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_ac43a2df7c8397bad82f3338fff4ef29e}{
+void {\bfseries svm\_\-train} (CvMat $\ast$, CvMat $\ast$)}
+\label{classmysvm_ac43a2df7c8397bad82f3338fff4ef29e}
+
+\item 
+\hypertarget{classmysvm_aaa966f0599178c7f369f6e6a23302680}{
+void \hyperlink{classmysvm_aaa966f0599178c7f369f6e6a23302680}{svm\_\-train} (CvMat $\ast$train, CvMat $\ast$response, double gamma, double C)}
+\label{classmysvm_aaa966f0599178c7f369f6e6a23302680}
+
+\begin{DoxyCompactList}\small\item\em appliquer l'apprentissage \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_adbff5721c400c283d87d7dc810f05aad}{
+void {\bfseries svm\_\-train} ()}
+\label{classmysvm_adbff5721c400c283d87d7dc810f05aad}
+
+\item 
+\hypertarget{classmysvm_a23489b7b25f60cd6f30a1adf36ea9f7b}{
+int $\ast$$\ast$ \hyperlink{classmysvm_a23489b7b25f60cd6f30a1adf36ea9f7b}{creer\_\-matrice} (int lig, int col)}
+\label{classmysvm_a23489b7b25f60cd6f30a1adf36ea9f7b}
+
+\begin{DoxyCompactList}\small\item\em create Matrix of pointers \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a1145343460aa721ca528ec71354ff24b}{
+void {\bfseries initialiser\_\-matrice} (int $\ast$$\ast$mat, int lig, int col)}
+\label{classmysvm_a1145343460aa721ca528ec71354ff24b}
+
+\item 
+\hypertarget{classmysvm_ae7edf7ed3b6e8d71ddc0d97acdb593e9}{
+int $\ast$$\ast$ \hyperlink{classmysvm_ae7edf7ed3b6e8d71ddc0d97acdb593e9}{preparer\_\-donee\_\-test} (vector$<$ vector$<$ int $>$$>$ \&, int begin, int end, int Total\_\-nb\_\-clusters)}
+\label{classmysvm_ae7edf7ed3b6e8d71ddc0d97acdb593e9}
+
+\begin{DoxyCompactList}\small\item\em preparation du donnee du test \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a10c0bdb7ca4ea6c64b7864ad44315dae}{
+void {\bfseries preparer\_\-donee\_\-test} (int $\ast$$\ast$, vector$<$ vector$<$ int $>$$>$ \&, int begin, int end, int Total\_\-nb\_\-clusters)}
+\label{classmysvm_a10c0bdb7ca4ea6c64b7864ad44315dae}
+
+\item 
+\hypertarget{classmysvm_a2afa430096385ec61419d15dcdaea54f}{
+int $\ast$$\ast$ \hyperlink{classmysvm_a2afa430096385ec61419d15dcdaea54f}{preparer\_\-donee\_\-test} (vector$<$ vector$<$ \hyperlink{classbins}{bins} $>$$>$ \&, int begin, int end, int Total\_\-nb\_\-clusters)}
+\label{classmysvm_a2afa430096385ec61419d15dcdaea54f}
+
+\begin{DoxyCompactList}\small\item\em prepare the data for testing \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a5893e27cdfb64485945ed708d7883296}{
+void {\bfseries svm\_\-test} ()}
+\label{classmysvm_a5893e27cdfb64485945ed708d7883296}
+
+\item 
+\hypertarget{classmysvm_ad53bbabda658b08b8acd8712b0af474b}{
+void \hyperlink{classmysvm_ad53bbabda658b08b8acd8712b0af474b}{svm\_\-test} (int $\ast$$\ast$data\_\-test, int nb\_\-images\_\-test, int Total\_\-nb\_\-clusters)}
+\label{classmysvm_ad53bbabda658b08b8acd8712b0af474b}
+
+\begin{DoxyCompactList}\small\item\em appliquer le test de svm et calculer la matrice de confusion \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a4065c2ceb87256f5a14d346fa094e42c}{
+void {\bfseries svm\_\-test} (int $\ast$$\ast$data\_\-test, int nb\_\-images\_\-test, int Total\_\-nb\_\-clusters, double $\ast$conf)}
+\label{classmysvm_a4065c2ceb87256f5a14d346fa094e42c}
+
+\item 
+\hypertarget{classmysvm_ac6be37ca40eacb678a558a44015846f5}{
+\hyperlink{classrate}{rate} \hyperlink{classmysvm_ac6be37ca40eacb678a558a44015846f5}{svm\_\-test} (int $\ast$$\ast$data\_\-test, int nb\_\-images\_\-test, int Total\_\-nb\_\-clusters, double index, const string \&fileName)}
+\label{classmysvm_ac6be37ca40eacb678a558a44015846f5}
+
+\begin{DoxyCompactList}\small\item\em this function return matrix like the confusion matrix but with different values of threshold ( index ) \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a70569f393920b4f27c05c14022935b94}{
+\hyperlink{classrate}{rate} {\bfseries svm\_\-test} (int $\ast$$\ast$data\_\-test, int nb\_\-images\_\-test, int Total\_\-nb\_\-clusters, double index)}
+\label{classmysvm_a70569f393920b4f27c05c14022935b94}
+
+\item 
+\hypertarget{classmysvm_a98ae7f2857912c8d16921d8e36a82104}{
+void {\bfseries svm\_\-test} (\hyperlink{classrate}{rate} \&freq, int $\ast$$\ast$data\_\-test, int nb\_\-images\_\-test, int Total\_\-nb\_\-clusters, double index)}
+\label{classmysvm_a98ae7f2857912c8d16921d8e36a82104}
+
+\item 
+\hypertarget{classmysvm_a8f94ef414ea347f621b59f09b07d08cb}{
+void \hyperlink{classmysvm_a8f94ef414ea347f621b59f09b07d08cb}{fill\_\-roc\_\-table} (vector$<$ \hyperlink{classroc__row}{roc\_\-row} $>$ \&table\_\-roc, vector$<$ vector$<$ int $>$$>$ \&ref\_\-class\_\-data, vector$<$ vector$<$ int $>$$>$ \&data\_\-test\_\-class2, int begin, int Total\_\-nb\_\-clusters, double index\_\-init, double index\_\-end, string Class\_\-ref)}
+\label{classmysvm_a8f94ef414ea347f621b59f09b07d08cb}
+
+\begin{DoxyCompactList}\small\item\em this function return the table that serve to draw the roc curve \end{DoxyCompactList}\item 
+\hypertarget{classmysvm_a6331d18ad38f5e66097f0dd6957af972}{
+double {\bfseries Trapezoid\_\-area} (double x1, double x2, double y1, double y2)}
+\label{classmysvm_a6331d18ad38f5e66097f0dd6957af972}
+
+\item 
+\hypertarget{classmysvm_a6e98d9cb804b9d895c7d472968c720f6}{
+double {\bfseries calc\_\-AUC} (vector$<$ \hyperlink{classroc__row}{roc\_\-row} $>$ \&table\_\-roc)}
+\label{classmysvm_a6e98d9cb804b9d895c7d472968c720f6}
+
+\item 
+\hypertarget{classmysvm_a0f1956b65d20d02574f8ed85bddaf76d}{
+void {\bfseries Free\_\-Tab} (int $\ast$$\ast$t, int nLignes)}
+\label{classmysvm_a0f1956b65d20d02574f8ed85bddaf76d}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+mysvm/mysvm.h\item 
+mysvm/mysvm.cpp\end{DoxyCompactItemize}

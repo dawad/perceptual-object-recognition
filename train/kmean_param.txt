@@ -1,0 +1,84 @@
+ class : aeroplane
+ category  : train
+ nombre d'image : 240 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 162.572
+ SIFT keypoints Total732007
+ class : bicycle
+ category  : train
+ nombre d'image : 255 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 162.662
+ SIFT keypoints Total1.92211e+006
+ class : bird
+ category  : train
+ nombre d'image : 333 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 176.435
+ SIFT keypoints Total2.00472e+006
+ class : boat
+ category  : train
+ nombre d'image : 188 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 172.801
+ SIFT keypoints Total868630
+ class : bottle
+ category  : train
+ nombre d'image : 262 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 172.409
+ SIFT keypoints Total1.53575e+006
+ class : bus
+ category  : train
+ nombre d'image : 197 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 177.86
+ SIFT keypoints Total1.38119e+006
+ class : car
+ category  : train
+ nombre d'image : 761 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 177.517
+ SIFT keypoints Total5.00809e+006
+ class : cat
+ category  : train
+ nombre d'image : 344 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 172.279
+ SIFT keypoints Total1.51478e+006
+ class : chair
+ category  : train
+ nombre d'image : 572 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 171.883
+ SIFT keypoints Total3.43293e+006
+ class : cow
+ category  : train
+ nombre d'image : 146 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 177.53
+ SIFT keypoints Total979907
+ class : diningtable
+ category  : train
+ nombre d'image : 263 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 172.7
+ SIFT keypoints Total1.67539e+006
+ class : dog
+ category  : train
+ nombre d'image : 430 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 172.231
+ SIFT keypoints Total2.36201e+006
+ class : horse
+ category  : train
+ nombre d'image : 294 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 175.775
+ SIFT keypoints Total2.2019e+006
+ class : motorbike
+ category  : train
+ nombre d'image : 249 img 
+ Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) 
+ Moyen temps de k_mean est : 171.919
+ SIFT keypoints Total1.92173e+006

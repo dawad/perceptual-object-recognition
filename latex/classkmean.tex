@@ -1,0 +1,53 @@
+\hypertarget{classkmean}{
+\section{kmean Class Reference}
+\label{classkmean}\index{kmean@{kmean}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classkmean_a953d3433332149709e7fa7876160602a}{
+Mat \hyperlink{classkmean_a953d3433332149709e7fa7876160602a}{select\_\-randomly\_\-desc} (vector$<$ vector$<$ float $>$$>$ \&, int Nb\_\-instance\_\-random, int desc\_\-dimension, int Nb\_\-trunc=4)}
+\label{classkmean_a953d3433332149709e7fa7876160602a}
+
+\begin{DoxyCompactList}\small\item\em cette fonction prend seulement les descripteurs (ne considere pas les 4 premiers colonnes) et select aleatoirement de vecteur test les descripteurs \end{DoxyCompactList}\item 
+\hypertarget{classkmean_aa4afe68cd61e22bf41cbe9044b871f0e}{
+Mat {\bfseries select\_\-randomly\_\-desc} (std::map$<$ std::string, vector$<$ vector$<$ float $>$$>$$>$ \&, int Nb\_\-instance\_\-random, int desc\_\-dimension, int Nb\_\-fichiers, int Nb\_\-trunc=4)}
+\label{classkmean_aa4afe68cd61e22bf41cbe9044b871f0e}
+
+\item 
+\hypertarget{classkmean_a1e6f6e35399a1f640c922e9eaff525cf}{
+CvMat $\ast$ {\bfseries select\_\-randomly\_\-descs} (std::map$<$ std::string, vector$<$ vector$<$ float $>$$>$$>$ \&, int Nb\_\-instance\_\-random, int desc\_\-dimension, int Nb\_\-fichiers, int Nb\_\-trunc=4)}
+\label{classkmean_a1e6f6e35399a1f640c922e9eaff525cf}
+
+\item 
+\hypertarget{classkmean_a23a7dc3d8c49703f051787b4f3bcaf82}{
+int \hyperlink{classkmean_a23a7dc3d8c49703f051787b4f3bcaf82}{set\_\-Nb\_\-instance\_\-random} (int instance)}
+\label{classkmean_a23a7dc3d8c49703f051787b4f3bcaf82}
+
+\begin{DoxyCompactList}\small\item\em change la valeur de nombre\_\- instance\_\-random et retourne la nouvelle valeur \end{DoxyCompactList}\item 
+\hypertarget{classkmean_ab8afcd6a426a0b90f1c51572bb9ce162}{
+int \hyperlink{classkmean_ab8afcd6a426a0b90f1c51572bb9ce162}{set\_\-nb\_\-clusters} (int clusters)}
+\label{classkmean_ab8afcd6a426a0b90f1c51572bb9ce162}
+
+\begin{DoxyCompactList}\small\item\em change la valeur de clusters et retourne la nouvelle valeur \end{DoxyCompactList}\item 
+\hypertarget{classkmean_a10ef747e31910444349659d60dd01a80}{
+int \hyperlink{classkmean_a10ef747e31910444349659d60dd01a80}{set\_\-desc\_\-dimension} (int dim)}
+\label{classkmean_a10ef747e31910444349659d60dd01a80}
+
+\begin{DoxyCompactList}\small\item\em change la valeur de la dimension des descripteurs et retourne la nouvelle valeur \end{DoxyCompactList}\item 
+\hypertarget{classkmean_a39af0fa051cf82f809fdd76c09a877a0}{
+void \hyperlink{classkmean_a39af0fa051cf82f809fdd76c09a877a0}{openCv\_\-kmean} (Mat data, Mat clusters, Mat centers, int nb\_\-clusters)}
+\label{classkmean_a39af0fa051cf82f809fdd76c09a877a0}
+
+\begin{DoxyCompactList}\small\item\em declaration du fonction kmeans ( existant en opencv) \end{DoxyCompactList}\item 
+\hypertarget{classkmean_aa056b14aebc3588b9e3bd4fc5b34352a}{
+void {\bfseries openCv\_\-kmean} (CvMat $\ast$data, CvMat $\ast$clusters, CvMat $\ast$centers, int nb\_\-clusters)}
+\label{classkmean_aa056b14aebc3588b9e3bd4fc5b34352a}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+kmean/kmean.h\item 
+kmean/kmean.cpp\end{DoxyCompactItemize}

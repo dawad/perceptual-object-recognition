@@ -1,0 +1,33 @@
+\hypertarget{classmanip__heatmap}{
+\section{manip\_\-heatmap Class Reference}
+\label{classmanip__heatmap}\index{manip\_\-heatmap@{manip\_\-heatmap}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classmanip__heatmap_a738445133bf5fa9a2675c0fca612a3be}{
+void \hyperlink{classmanip__heatmap_a738445133bf5fa9a2675c0fca612a3be}{get\_\-grayscale} (const char $\ast$)}
+\label{classmanip__heatmap_a738445133bf5fa9a2675c0fca612a3be}
+
+\begin{DoxyCompactList}\small\item\em get the grayscale value for an image \end{DoxyCompactList}\item 
+\hypertarget{classmanip__heatmap_a5b77e61135b1ad4ad1b26cb3e8e3d98a}{
+void \hyperlink{classmanip__heatmap_a5b77e61135b1ad4ad1b26cb3e8e3d98a}{generate\_\-mask} (const char $\ast$, double threshold, vector$<$ \hyperlink{class_mask}{Mask} $>$ \&mask\_\-table, int fileId=0)}
+\label{classmanip__heatmap_a5b77e61135b1ad4ad1b26cb3e8e3d98a}
+
+\begin{DoxyCompactList}\small\item\em generate a mask based on heatmap grayscale value and threshold value \end{DoxyCompactList}\item 
+\hypertarget{classmanip__heatmap_af519d48e8a3eeaa88db9548d19e6a417}{
+void \hyperlink{classmanip__heatmap_af519d48e8a3eeaa88db9548d19e6a417}{generate\_\-mutli\_\-mask} (vector$<$ const char $\ast$ $>$ \&, double threshold, vector$<$ vector$<$ \hyperlink{class_mask}{Mask} $>$$>$ \&T\_\-mask)}
+\label{classmanip__heatmap_af519d48e8a3eeaa88db9548d19e6a417}
+
+\begin{DoxyCompactList}\small\item\em generate mutli masks that varies depending on the threshold value \end{DoxyCompactList}\item 
+\hypertarget{classmanip__heatmap_a680926706938ec01fe9f0575e1cef619}{
+void \hyperlink{classmanip__heatmap_a680926706938ec01fe9f0575e1cef619}{filter\_\-sift\_\-pts} (vector$<$ \hyperlink{class_mask}{Mask} $>$ \&, double, vector$<$ vector$<$ float $>$$>$ \&, vector$<$ vector$<$ float $>$$>$ \&, int)}
+\label{classmanip__heatmap_a680926706938ec01fe9f0575e1cef619}
+
+\begin{DoxyCompactList}\small\item\em filter the sift descriptors based on \hyperlink{class_mask}{Mask} values \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+manip\_\-heatmap.h\item 
+manip\_\-heatmap.cpp\end{DoxyCompactItemize}

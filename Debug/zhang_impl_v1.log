@@ -1,0 +1,58 @@
+﻿Build started 19/06/2012 14:56:35.
+     1>Project "C:\Users\dawad\Documents\Visual Studio 2010\Projects\zhang_impl_v1\zhang_impl_v1\zhang_impl_v1.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\zhang_impl_v1.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\zhang_impl_v1.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt kmean\kmean.cpp zhang_impl_main.cpp
+         zhang_impl_main.cpp
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\fichiers\fichiers.h(94): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\zhang_impl_main.cpp(88): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+         kmean.cpp
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(33): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(41): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(54): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(68): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(75): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(92): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(111): warning C4018: '>' : signed/unsigned mismatch
+     1>c:\users\dawad\documents\visual studio 2010\projects\zhang_impl_v1\zhang_impl_v1\kmean\kmean.cpp(118): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+       ResourceCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\dawad\Documents\Visual Studio 2010\Projects\zhang_impl_v1\Debug\zhang_impl_v1.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\OpenCV-2.1.0\build\lib\Debug" ml210d.lib cv210d.lib cxcore210d.lib highgui210d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\zhang_impl_v1.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\dawad\Documents\Visual Studio 2010\Projects\zhang_impl_v1\Debug\zhang_impl_v1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\dawad\Documents\Visual Studio 2010\Projects\zhang_impl_v1\Debug\zhang_impl_v1.lib" /MACHINE:X86 Debug\zhang_impl_v1.res
+         Debug\zhang_impl_v1.exe.embed.manifest.res
+         Debug\bins.obj
+         Debug\Mask.obj
+         Debug\nearest_clusters.obj
+         Debug\rate.obj
+         Debug\word.obj
+         Debug\Donnees.obj
+         Debug\Fichiers.obj
+         Debug\histograms.obj
+         Debug\khi_deux.obj
+         Debug\kmean.obj
+         Debug\roc_row.obj
+         Debug\manip_heatmap.obj
+         Debug\SIFT_filter.obj
+         Debug\stdafx.obj
+         Debug\mysvm.obj
+         Debug\zhang_impl_main.obj
+         Debug\zhang_impl_v1.obj
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\zhang_impl_v1.exe.embed.manifest" /manifest Debug\zhang_impl_v1.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         zhang_impl_v1.vcxproj -> C:\Users\dawad\Documents\Visual Studio 2010\Projects\zhang_impl_v1\Debug\zhang_impl_v1.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\zhang_impl_v1.unsuccessfulbuild".
+         Touching "Debug\zhang_impl_v1.lastbuildstate".
+     1>Done Building Project "C:\Users\dawad\Documents\Visual Studio 2010\Projects\zhang_impl_v1\zhang_impl_v1\zhang_impl_v1.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.86

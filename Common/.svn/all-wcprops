@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/ulr/Dounia/!svn/ver/38/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common
+END
+roc_row.h
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ulr/Dounia/!svn/ver/38/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/roc_row.h
+END
+bins.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ulr/Dounia/!svn/ver/22/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/bins.h
+END
+word.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ulr/Dounia/!svn/ver/35/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/word.h
+END
+Mask.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ulr/Dounia/!svn/ver/37/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/Mask.h
+END
+rate.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ulr/Dounia/!svn/ver/38/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/rate.h
+END
+Util.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ulr/Dounia/!svn/ver/15/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/Util.h
+END
+mot.h
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ulr/Dounia/!svn/ver/35/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/mot.h
+END
+nearest_clusters.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/ulr/Dounia/!svn/ver/35/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/nearest_clusters.cpp
+END
+nearest_clusters.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ulr/Dounia/!svn/ver/22/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/nearest_clusters.h
+END
+roc_row.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ulr/Dounia/!svn/ver/35/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/roc_row.cpp
+END
+bins.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ulr/Dounia/!svn/ver/22/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/bins.cpp
+END
+word.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ulr/Dounia/!svn/ver/35/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/word.cpp
+END
+Mask.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ulr/Dounia/!svn/ver/37/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/Mask.cpp
+END
+rate.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ulr/Dounia/!svn/ver/38/Zhang_implementation/zhang_impl_v1/zhang_impl_v1/Common/rate.cpp
+END

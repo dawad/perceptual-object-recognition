@@ -1,0 +1,68 @@
+\hypertarget{classhistograms}{
+\section{histograms Class Reference}
+\label{classhistograms}\index{histograms@{histograms}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classhistograms_a9a5207bc961be545832cc8287446afce}{
+float \hyperlink{classhistograms_a9a5207bc961be545832cc8287446afce}{get\_\-last\_\-element} (vector$<$ vector$<$ float $>$$>$ \&descripteurs)}
+\label{classhistograms_a9a5207bc961be545832cc8287446afce}
+
+\begin{DoxyCompactList}\small\item\em get the last last image in the descriptors \end{DoxyCompactList}\item 
+\hypertarget{classhistograms_ac0ab4640283cc80f15b59a5269a0fcfa}{
+void \hyperlink{classhistograms_ac0ab4640283cc80f15b59a5269a0fcfa}{sort\_\-descripteurs} (vector$<$ vector$<$ float $>$$>$ \&descripteur)}
+\label{classhistograms_ac0ab4640283cc80f15b59a5269a0fcfa}
+
+\begin{DoxyCompactList}\small\item\em trier les tableaus des desccripteurs en finction des images\_\-id represente en row\mbox{[}3\mbox{]} \end{DoxyCompactList}\item 
+\hypertarget{classhistograms_abe7424c07446de02e494914eb04f8ff4}{
+void \hyperlink{classhistograms_abe7424c07446de02e494914eb04f8ff4}{Calculer\_\-min\_\-distance} (vector$<$ vector$<$ float $>$$>$ \&keyppoints, vector$<$ vector$<$ float $>$$>$ \&descriptors, vector$<$ \hyperlink{classword}{word} $>$ \&, int total\_\-nb\_\-clusters, int Nb\_\-trunc=4)}
+\label{classhistograms_abe7424c07446de02e494914eb04f8ff4}
+
+\begin{DoxyCompactList}\small\item\em calculer la distance entre les centres et les points , prend le centre qui a la plus petit distance et retourne un tableau de words contenant \{point , scale , image\_\-id , centre ) \end{DoxyCompactList}\item 
+\hypertarget{classhistograms_a827aa329900a8b7833e368103a3b3a3a}{
+void {\bfseries Calculer\_\-min\_\-distance} (vector$<$ vector$<$ float $>$$>$ \&keyppoints, std::map$<$ std::string, vector$<$ vector$<$ float $>$$>$$>$ \&, std::map$<$ std::string, vector$<$ \hyperlink{classmot}{mot} $>$$>$ \&, int, int Nb\_\-trunc=4)}
+\label{classhistograms_a827aa329900a8b7833e368103a3b3a3a}
+
+\item 
+\hypertarget{classhistograms_a3b4cb4ba04b27ba1c57492a7d1e94696}{
+void {\bfseries Calculer\_\-min\_\-distance} (vector$<$ vector$<$ float $>$$>$ \&keyppoints, vector$<$ vector$<$ float $>$$>$ \&descriptors, vector$<$ \hyperlink{classmot}{mot} $>$ \&, int total\_\-nb\_\-clusters, int Nb\_\-trunc=4)}
+\label{classhistograms_a3b4cb4ba04b27ba1c57492a7d1e94696}
+
+\item 
+\hypertarget{classhistograms_acaa5aaf84fa9cfecb7add6b9e6a216e9}{
+void \hyperlink{classhistograms_acaa5aaf84fa9cfecb7add6b9e6a216e9}{build\_\-histogram} (vector$<$ \hyperlink{classword}{word} $>$ \&, int img\_\-id, vector$<$ \hyperlink{classbins}{bins} $>$ \&, int total\_\-nb\_\-clusters)}
+\label{classhistograms_acaa5aaf84fa9cfecb7add6b9e6a216e9}
+
+\begin{DoxyCompactList}\small\item\em calculer la frequence des chaque word dans dans chaque image \end{DoxyCompactList}\item 
+\hypertarget{classhistograms_a647fc134a6cdb0f096390b25c641d892}{
+void {\bfseries build\_\-histogram} (vector$<$ \hyperlink{classmot}{mot} $>$ \&, vector$<$ \hyperlink{classbins}{bins} $>$ \&, int total\_\-nb\_\-clusters)}
+\label{classhistograms_a647fc134a6cdb0f096390b25c641d892}
+
+\item 
+\hypertarget{classhistograms_adfa78c12c3a9470f5ebb2264a265fe04}{
+void {\bfseries build\_\-histograms} (std::map$<$ std::string, vector$<$ \hyperlink{classmot}{mot} $>$$>$ \&, std::map$<$ std::string, vector$<$ \hyperlink{classbins}{bins} $>$$>$ \&, int total\_\-nb\_\-clusters)}
+\label{classhistograms_adfa78c12c3a9470f5ebb2264a265fe04}
+
+\item 
+\hypertarget{classhistograms_a552dd9c1cdf353c47dab5b064e4c416c}{
+void \hyperlink{classhistograms_a552dd9c1cdf353c47dab5b064e4c416c}{get\_\-all\_\-histograms} (vector$<$ vector$<$ \hyperlink{classbins}{bins} $>$$>$ \&, float, vector$<$ \hyperlink{classword}{word} $>$ \&, int)}
+\label{classhistograms_a552dd9c1cdf353c47dab5b064e4c416c}
+
+\begin{DoxyCompactList}\small\item\em calcule les histogrammes pour toutes les images \end{DoxyCompactList}\item 
+\hypertarget{classhistograms_a15e3f552cec3496cb25cf3d10ed0ab32}{
+\hyperlink{classnearest__clusters}{nearest\_\-clusters} \hyperlink{classhistograms_a15e3f552cec3496cb25cf3d10ed0ab32}{plus\_\-proche\_\-clusters} (float distances\mbox{[}$\,$\mbox{]}, int size)}
+\label{classhistograms_a15e3f552cec3496cb25cf3d10ed0ab32}
+
+\begin{DoxyCompactList}\small\item\em calculer le centre la plus proche pour chaque points \end{DoxyCompactList}\item 
+\hypertarget{classhistograms_a0bdc6b52107722cbd118c37db1ef6b92}{
+void \hyperlink{classhistograms_a0bdc6b52107722cbd118c37db1ef6b92}{concatenate\_\-clusters\_\-centers} (Mat centers\_\-cars, Mat centers\_\-perso, Mat centers\_\-bike, Mat centers\_\-moto, vector$<$ vector$<$ float $>$$>$ \&)}
+\label{classhistograms_a0bdc6b52107722cbd118c37db1ef6b92}
+
+\begin{DoxyCompactList}\small\item\em regroups all the keypoints calculated in one vector to get the visual vocabulary of 1000 words. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+histograms/histograms.h\item 
+histograms/histograms.cpp\end{DoxyCompactItemize}

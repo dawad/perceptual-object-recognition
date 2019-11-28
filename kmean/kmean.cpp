@@ -1,0 +1,207 @@
+#include "stdafx.h"
+
+#include<iostream>
+#include<fstream>
+#include "cv.h"
+#include "highgui.h"
+#include <string>
+#include <stdexcept>
+#include <vector>
+#include <windows.h>
+#include <cstdlib>
+#include <ctime>
+#include <stdio.h>
+#include <conio.h>
+#include <strsafe.h>
+#include <sstream> 
+#include "kmean.h"
+
+
+kmean::kmean(void)
+{
+}
+
+
+kmean::~kmean(void)
+{
+	cout <<  " k_mean destructor runs  " << endl;
+}
+
+/// cette fonction prend seulement les descripteurs (ne considere pas les 4 premiers colonnes) et select aleatoirement de vecteur test les descripteurs 
+Mat kmean::select_randomly_desc (vector<vector <float>>& test , int Nb_instance_random ,int desc_dimension,int Nb_trunc)
+{
+	srand(time(0));
+	CvMat* mat =cvCreateMat(Nb_instance_random ,desc_dimension,CV_32FC1);
+	Mat data(mat);
+
+	for(int d=0; d < Nb_instance_random ; d++)
+	{
+		int r= rand() % (test.size());
+	
+    for(int j=Nb_trunc; j<test.at(r).size(); j++)
+    {	
+	  		data.at<float>(d,j-Nb_trunc)=test[r][j];
+	}
+
+	}
+	cout <<"The data have been selected randomly and the unnecessary data has been removed "<<endl;
+	return data;
+}
+
+
+Mat kmean::select_randomly_desc (std::map< std::string  ,vector<vector<float>>>& test , int Nb_instance_random ,int desc_dimension, int Nb_fichiers,int Nb_trunc)
+{
+	srand(time(0));
+	CvMat* mat =cvCreateMat(Nb_instance_random ,desc_dimension,CV_32FC1);
+	Mat data(mat);
+	 int d =0;
+	 int local_total=Nb_instance_random/Nb_fichiers;
+	 cout << " step " << local_total <<endl;
+	while(  d < Nb_instance_random)
+	{
+	 map<std::string,vector<vector<float>> >::iterator iter = test.begin();
+	  while (iter != test.end ()&& d < Nb_instance_random)
+	  {		
+			 vector<vector<float>>tempVec = (*iter).second;
+			 String key =(*iter).first;
+			 int Nb=local_total;
+			 if(local_total>tempVec.size())
+			 {
+				 int Nb=tempVec.size();
+			 }
+			 for(int i=0; i<Nb && d<Nb_instance_random;i++)
+			 {
+			 int r= rand() % (tempVec.size());
+			 for(int j=Nb_trunc; j<tempVec.at(r).size(); j++)
+				{
+					data.at<float>(d,j-Nb_trunc)=tempVec[r][j];
+				}	
+			d++;
+	        }
+	iter++;
+	 }
+	  
+	}
+	  	
+	cout <<"The data have been selected randomly and the unnecessary data has been removed "<<endl;
+	return data;
+}
+
+CvMat* kmean::select_randomly_descs(std::map< std::string  ,vector<vector<float>>>& test , int Nb_instance_random ,int desc_dimension, int Nb_fichiers,int Nb_trunc)
+{
+	srand(time(0));
+
+	CvMat* mat =cvCreateMat(Nb_instance_random ,desc_dimension,CV_32FC1);
+	
+	 int d =0;
+	 int local_total=Nb_instance_random/Nb_fichiers;
+
+	 cout << " step " << local_total <<endl;
+
+	while(  d < Nb_instance_random)
+	{
+	 map<std::string,vector<vector<float>> >::iterator iter = test.begin();
+	  while (iter != test.end ()&& d < Nb_instance_random)
+	  {		
+			 vector<vector<float>>tempVec = (*iter).second;
+			 if(tempVec.size()>0)
+			 {
+				 String key =(*iter).first;
+				 int Nb=local_total;
+				 if(local_total>tempVec.size())
+				 {
+					 int Nb=tempVec.size();
+				 }
+				 for(int i=0; i<Nb && d<Nb_instance_random;i++)
+				 {
+				 int r= rand() % (tempVec.size());
+				 for(int j=Nb_trunc; j<tempVec.at(r).size(); j++)
+					{
+						cvmSet(mat,d,j-Nb_trunc,tempVec[r][j]);
+					}	
+				 d++;
+				 }
+				iter++;
+			}
+			 else 
+				 iter++;
+		
+	 }	 
+	}
+	cout <<"The data have been selected randomly and the unnecessary data has been removed "<<endl;
+	return mat;
+}
+void kmean::select_randomly_descs(CvMat* mat,std::map< std::string  ,vector<vector<float>>>& test , int Nb_instance_random ,int desc_dimension, int Nb_fichiers,int Nb_trunc)
+{
+	srand(time(0));
+
+	//CvMat* mat =cvCreateMat(Nb_instance_random ,desc_dimension,CV_32FC1);
+	
+	 int d =0;
+	 int local_total=Nb_instance_random/Nb_fichiers;
+
+	 cout << " step " << local_total <<endl;
+
+	while(  d < Nb_instance_random)
+	{
+	 map<std::string,vector<vector<float>> >::iterator iter = test.begin();
+	  while (iter != test.end ()&& d < Nb_instance_random)
+	  {		
+			 vector<vector<float>>tempVec = (*iter).second;
+			 if(tempVec.size()>0)
+			 {
+				 String key =(*iter).first;
+				 int Nb=local_total;
+				 if(local_total>tempVec.size())
+				 {
+					 int Nb=tempVec.size();
+				 }
+				 for(int i=0; i<Nb && d<Nb_instance_random;i++)
+				 {
+				 int r= rand() % (tempVec.size());
+				 for(int j=Nb_trunc; j<tempVec.at(r).size(); j++)
+					{
+						cvmSet(mat,d,j-Nb_trunc,tempVec[r][j]);
+					}	
+				 d++;
+				 }
+				iter++;
+			}
+			 else 
+				 iter++;
+		
+	 }	 
+	}
+	cout <<"The data have been selected randomly and the unnecessary data has been removed "<<endl;
+	
+}
+/// change la valeur de nombre_ instance_random et retourne la nouvelle valeur 
+int kmean::set_Nb_instance_random(int instance)
+{
+ kmean::Nb_instance_random = instance ;
+ return kmean::Nb_instance_random;
+}
+/// change la valeur de clusters et retourne la nouvelle valeur 
+int kmean::set_nb_clusters(int clusters)
+{
+	kmean::nb_clusters=clusters;
+	return kmean::nb_clusters;
+}
+/// change la valeur de la dimension des descripteurs et retourne la nouvelle valeur 
+int kmean::set_desc_dimension(int dim)
+{
+	kmean::desc_dimension=dim;
+	return kmean::desc_dimension;
+}
+/// declaration du fonction kmeans ( existant en opencv)
+void kmean::openCv_kmean(Mat data, Mat Clusters,Mat Centers , int nb_clusters)
+{	
+		kmeans(data,nb_clusters,Clusters,cvTermCriteria( CV_TERMCRIT_EPS+CV_TERMCRIT_ITER, 100, 0.01 ),2,0,&Centers);
+	
+	cout << "The clusters have been determined "<<endl;
+}
+void kmean::openCv_kmean(CvMat* data, CvMat* Clusters,CvMat* Centers , int nb_clusters)
+{		
+	cvKMeans2(data,nb_clusters,Clusters,cvTermCriteria( CV_TERMCRIT_EPS+CV_TERMCRIT_ITER, 100, 0.01 ),2,0,0,Centers);
+	cout << "The clusters have been determined "<<endl;
+}

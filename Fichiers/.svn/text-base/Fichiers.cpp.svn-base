@@ -1,0 +1,901 @@
+#include "stdafx.h"
+#include<iostream>
+#include<fstream>
+#include "cv.h"
+#include "highgui.h"
+#include <string>
+#include <stdexcept>
+#include <vector>
+#include <windows.h>
+#include <cstdlib>
+#include <ctime>
+#include <stdio.h>
+#include <conio.h>
+#include <strsafe.h>
+#include <sstream> 
+#include <exception>
+#include "../Common/bins.h"
+#include "../Common/Util.h"
+#include "../Common/roc_row.h"
+#include <boost/algorithm/string.hpp>
+#include <boost/filesystem/operations.hpp>
+#include<boost/filesystem/fstream.hpp>
+
+#include "arff_data/Donnees.h"
+
+#include "Fichiers.h"
+typedef std::vector<float> Row;
+
+
+Donnees dat;
+using namespace cv;
+using namespace std ;
+using namespace boost::filesystem;
+
+Fichiers::Fichiers()
+{
+	
+}
+Fichiers::Fichiers( string name)
+{
+	Fichiers::File_Name=name;
+}
+		 
+Fichiers::~Fichiers()
+{
+	cout << Fichiers::File_Name << " destructor runs  " << endl;
+}
+		 
+///lire de fichiers txt , et le stocker dans le vecteur data 
+void Fichiers::read_files(const string &name, vector< vector < float >> &data )
+{
+std::ifstream in(name.c_str());
+while(in)
+{
+	std::string line;
+	std::getline(in,line);
+	if(line.length()>1)
+	{
+	std::istringstream is(line);
+	Row row;
+	while (is.good())
+	{
+		float data;
+		is >> data;
+		row.push_back(data);
+	}
+	data.push_back(row);
+   }
+
+}
+cout <<"the" <<name <<"have been readed"<<endl;
+in.close();
+}
+void Fichiers::read_txt_file(const String & file_name, std::vector <vector<float>> & interest_points)
+{
+	std::ifstream in(file_name.c_str());
+	string line;
+    int linenum = 0;
+    while (getline (in, line))
+    {
+        linenum++;
+    	istringstream linestream(line);
+		if(linenum>5)
+		{
+		string item;
+		int num;
+		Row row;
+		 int itemnum = 0;
+		while (getline (linestream, item, ' '))
+        {
+            itemnum++;
+			sscanf(item.c_str(), "%d", &num);
+			row.push_back(num);
+  			
+        }
+		interest_points.push_back(row);
+		}
+	}
+
+//cout <<"the file "<<name<< " have been readed"<<endl;
+in.close();
+}
+void Fichiers::read_files(const string &name, vector< vector < int >> &data )
+{
+std::ifstream in(name.c_str());
+typedef std::vector<int> Row;
+while(in)
+{
+	std::string line;
+	std::getline(in,line);
+	if(line.length()>1)
+	{
+	std::istringstream is(line);
+	Row row;
+	while (is.good())
+	{
+		float data;
+		is >> data;
+		row.push_back(data);
+	}
+	data.push_back(row);
+   }
+}
+cout <<"the file have been readed"<<endl;
+in.close();
+}
+/// lire plusieurs fichiers represente sous forme du tableau 
+void Fichiers::read_multi_files(string fichier[] , int nb_fichiers , vector <vector <float>> & data )
+{
+	for (int i=0; i <nb_fichiers ; i++)
+	{
+		read_files(fichier[i],data);
+	}
+	cout <<"the files have been readed"<<endl;
+}
+/// lire de txt fichiers contenant ASCII code ( caracteres , chaine de caractere ) et le stocker en vecteur data 
+void Fichiers::read_ASCII_files(const string &name, vector< vector < float >> &data )
+{
+	std::ifstream in(name.c_str());
+
+while(in)
+{
+    std::string line;
+	std::getline(in,line);
+	if(line.length()>1 && line[0]!=' ')
+	{
+		std::istringstream is(line);
+        Row row;
+	    while (is.good())
+	    {
+		float data;
+		is >> data;
+		row.push_back(data);
+		
+	    }
+	data.push_back(row);
+	}
+}
+cout <<"the files have been readed"<<endl;
+in.close();
+}
+/// lire ASCIII files 
+void Fichiers::read_ASCII_files(const string &name, vector< vector < int >> &data )
+{
+	std::ifstream in(name.c_str());
+	typedef std::vector<int> Row;
+while(in)
+{
+    std::string line;
+	std::getline(in,line);
+	if(line.length () >20 && check_char_line(line) ==false)	
+	{
+		std::istringstream is(line);
+        Row row;
+	    while (is.good() && row.size()<100)
+	    {
+		float data;
+		is >> data;
+		row.push_back(data);
+		
+	    }
+	data.push_back(row);
+	}
+}
+cout <<"the" <<name <<"have been readed"<<endl;
+in.close();
+}
+void Fichiers::read_ASCII_files(const string &name, vector< vector < int >> &data ,int Total_nb_cluster )
+{
+	std::ifstream in(name.c_str());
+	typedef std::vector<int> Row;
+	 std::string line;
+   int linenum = 0;
+   while (getline (in, line))
+    {
+		 linenum++;
+    	istringstream linestream(line);
+   	if((linenum %2)==0 && check_char_line(line) ==false)	
+	{
+		string item;
+		int num;
+		Row row;
+		 int itemnum = 0;
+	   while (getline (linestream, item, ' '))
+        {
+			sscanf(item.c_str(), "%d", &num);
+			row.push_back(num);
+  			
+	    }
+	data.push_back(row);
+	}
+}
+cout <<"the" <<name <<"have been readed"<<endl;
+in.close();
+}
+/// lire plusieurs fichiers et les sauvegarder dans un vecteur de vecteur 
+void Fichiers::read_multi_ACII_files(string files [], int nb_files, vector <vector <float >> & data)
+{
+	for (int i=0; i <nb_files ; i++)
+	{
+		read_ASCII_files(files[i],data);
+	}
+	cout <<"the files have been readed"<<endl;
+}
+/// recherche pour des fichiers qui est de nom similaire 
+int Fichiers::search_similar_file_name(std::vector <boost::filesystem3::path> & descript_files ,string name_file )//, int id_file)
+		{ 	
+			int id=-1;
+			
+			for (int i=0 ;i<descript_files.size() ; i++)
+			{
+			string img_name=descript_files[i].leaf().string().substr(0,descript_files[i].leaf().string().size()-17);
+	    	if (img_name==name_file)
+			{
+				//if(i==id_file) continue;
+				 id =i; break;
+			}
+			
+	
+		}
+	cout<< "file laplacian SIfT " << descript_files[id]<< endl;
+return id;
+}
+
+/// find the right heatmap for an image 
+void Fichiers::get_heatmap_file ( const char* & heatmap , const string  & image_file , vector < const string > &heatmap_files )
+{	
+	for ( int i=0 ; i< heatmap_files.size();i++)
+	{
+		string original_img=heatmap_files[i].substr(0,(heatmap_files[i].size()-14));
+		char*_heatmap =new char[original_img.size()+1];
+		strcpy(_heatmap,original_img.c_str());
+		char*_heatmap_name=strtok(_heatmap,".");
+		//cout << "heatmap name  "<< _heatmap_name <<endl;
+		//delete []_heatmap;
+		if (strcmp(image_file.c_str(),_heatmap_name) ==0)
+		{
+			heatmap=heatmap_files[i].c_str();
+			break;
+		}
+	}
+}
+void Fichiers::get_heatmap_file (string & heatmap , const string  & image_file , vector < boost::filesystem3::path > &heatmap_files )
+{	
+	try
+		 {
+	for ( int i=0 ; i< heatmap_files.size();i++)
+	{
+		
+		string original_img=heatmap_files[i].leaf().string().substr(12,heatmap_files[i].leaf().string().size());
+	     
+		if (strcmp(image_file.c_str(),original_img.c_str()) ==0)
+		{
+			heatmap=heatmap_files[i].string();
+			break;
+		}
+	}
+		//else 
+			//cout << "the file is not found" <<endl;
+	}
+	catch ( exception& e ) 
+	{
+	cerr<<" file not found \n";
+}
+}
+/// lire toutes les fichiers dans un dossier et sous-dossiers
+void Fichiers::read_Dirs(const boost::filesystem3::path & directory , vector <boost::filesystem3::path> & files ,bool recurse_into_subdirs)
+{
+	if(exists(directory))
+	{
+		directory_iterator end;
+		for(directory_iterator iter(directory); iter!=end;++iter)
+			if(is_directory(*iter))
+			{
+				cout <<iter->path().string() <<"(directory)\n";
+				if(recurse_into_subdirs) read_Dirs(*iter,files);
+			}
+			else 
+			{
+				files.push_back(iter->path().c_str());
+							
+			}
+
+	}
+
+}
+/// lire toutes les .desc fichiers dans un dossier et sous-dossiers
+
+void Fichiers::read_desc_Dirs(const boost::filesystem3::path & directory , vector <boost::filesystem3::path> & files ,bool recurse_into_subdirs)
+{
+	if(exists(directory))
+	{
+		directory_iterator end;
+		for(directory_iterator iter(directory); iter!=end;++iter)
+			if(is_directory(*iter))
+			{
+				cout <<iter->path().string() <<"(directory)\n";
+				if(recurse_into_subdirs) read_Dirs(*iter,files);
+			}
+			else 
+			{
+				bool check_in=Fichiers::check_desc_file(iter->path().leaf().string());
+				if(check_in)
+				{
+					files.push_back(iter->path().c_str());
+				}
+				
+			}
+
+	}
+
+}
+
+void Fichiers::read_Dirs(const boost::filesystem3::path & directory , vector <const string> & files ,bool recurse_into_subdirs)
+{
+	if(exists(directory))
+	{
+		directory_iterator end;
+		for(directory_iterator iter(directory); iter!=end;++iter)
+			if(is_directory(*iter))
+			{
+				cout <<iter->path().string() <<"(directory)\n";
+				if(recurse_into_subdirs) read_Dirs(*iter,files);
+			}
+			else 
+			{
+				//cout << iter->path().string() <<"(file) \n";
+				files.push_back(iter->path().leaf().string());
+			}
+
+	}
+
+}
+
+/// recuperer le liste des fichiers . desc 
+bool Fichiers::check_desc_file(const string & name)
+{
+	bool check_in =false;
+	string file_extension=Fichiers::GetFileExtension(name);
+	if(file_extension=="desc")
+		check_in=true;
+	return check_in;
+}
+/// lire .desc file format 
+inline void  Fichiers::read_desc_file(const string & name, vector<vector<float>> & descripts)
+{
+std::ifstream in(name.c_str());
+
+while(in)
+{
+    std::string line;
+	std::getline(in,line);
+	if(line.length()>100)
+	{
+		std::istringstream is(line);
+        Row row;
+	    while (is.good())
+	    {
+		float data;
+		is >> data;
+		row.push_back(data);
+		
+	    }
+	descripts.push_back(row);
+	}
+	else 
+		continue;
+
+}
+in.close();
+}
+
+/// lire plusieurs .desc fichiers et les sauvegarder dans un vecteur de vecteur 
+void Fichiers::read_multi_desc_files(const boost::filesystem3::path fichier[] , int nb_fichiers , vector <vector < float >> & data )
+{
+	
+	for (int i=0; i <nb_fichiers ; i++)
+	{ 
+		
+		Fichiers::read_desc_file(fichier[i].string(),data);
+	
+	}
+	cout <<"the files have been readed"<<endl;
+}
+/// lire plusieurs fichiers et les sauvegarder dans un map ou le cle est le nom du fichier .desc
+void Fichiers::read_multi_desc_files(std::vector <boost::filesystem3::path> & descript_files , std::map<std::string ,vector<vector<float>>> & descriptors)
+{
+	vector <vector<float>> descpt;
+	cout << descript_files.size() <<" " << endl;
+	
+	for ( int id=0 ; id<descript_files.size() ; id++)
+	{   
+		if(descriptors.count(descript_files[id].leaf().string())==0)
+		{
+		Fichiers::read_desc_file (descript_files[id].string(), descpt);
+		descriptors[descript_files[id].leaf().string()]=descpt;
+		descpt.clear();
+		}
+		else 
+		{
+			Fichiers::read_desc_file (descript_files[id].string(), descpt);
+			descriptors[descript_files[id].leaf().string()].insert(descriptors[descript_files[id].leaf().string()].end(),descpt.begin(),descpt.end());
+			descpt.clear();
+		}
+			descpt.clear();
+		}
+		
+	
+}
+/// lire plusieurs fichiers et le stocker dans un map avec nom de l'image comme cle
+void Fichiers::read_multi_txt_files(std::vector <boost::filesystem3::path> & descript_files , std::map<std::string ,vector<vector<float>>> & descriptors)
+{
+	vector <vector<float>> descpt;
+	cout << descript_files.size() <<" " << endl;
+	for ( int id=0 ; id<descript_files.size() ; id++)
+	{   
+		//Fichiers::read_files (descript_files[id].string(), descpt);
+		Fichiers::read_txt_file(descript_files[id].string(), descpt);
+		string img_name=descript_files[id].leaf().string().substr(0,descript_files[id].leaf().string().size()-13);
+		//cout <<"img name " << img_name ;
+		if(descriptors.count(img_name)==0)
+		{
+		descriptors[img_name]=descpt;
+		descpt.clear();
+		}
+		else 
+		{			
+			descriptors[img_name].insert(descriptors[img_name].end(),descpt.begin(),descpt.end());
+			descpt.clear();
+		}
+		
+	}
+}
+
+
+/// ecrire les donnees dans fichiers ASCII txt 
+
+void Fichiers::write_ASCII_txt(const string &name, vector< vector < float >> &data )
+{
+	std::ofstream out(name.c_str());
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	
+	for(int i=0;i < data.size();i++)
+	{
+		out <<"\n\n center ("<< i << ") : \n "<<endl;
+		//out<<"\n";
+		for(int j=0;j < data.at(i).size();j++)
+		{
+			out <<data[i][j] << " ";
+		}
+	}
+
+	cout<<" the file " << name<<" created."<<endl;
+	out.close();
+}
+/// ecrire un fichier pour avoir le temps de calcul pour recherche le plus proche voisins et la construction d'histogramme
+void Fichiers::write_param_txt(const string &fileName , string classe, string categ, int img_number , float avg_time_PPV , float avg_time_histog , int taille )
+{
+	std::ofstream out(fileName.c_str(),ios::out |ios::app);
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	out << " class : " << classe << "\n category  : " <<categ << "\n nombre d'image : " <<img_number << " img \n Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) \n Moyen temps de calcul pour recherche plsu proche voisin : " <<avg_time_PPV<< " sec \n Moyen temps du calcul pour contruire un histogramme : "<<avg_time_histog <<" sec \n";
+	out <<" Nombre de SIFT keypoints " << taille <<"\n";
+	out.close();
+}
+void Fichiers::write_param_txt(const string &fileName , string classe, string categ, int img_number , float avg_time_PPV , float avg_time_histog ,int threshold, int taille )
+{
+	std::ofstream out(fileName.c_str(),ios::out |ios::app);
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	out<< "threshold " << threshold <<"\n";
+	out << " class : " << classe << "\n category  : " <<categ << "\n nombre d'image : " <<img_number << " img \n Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) \n Moyen temps de calcul pour recherche plsu proche voisin : " <<avg_time_PPV<< " sec \n Moyen temps du calcul pour contruire un histogramme : "<<avg_time_histog <<" sec \n";
+	out <<" Nombre de SIFT keypoints " << taille <<"\n";
+	out.close();
+}
+/// ecrire les resultats du test du svm 
+	void Fichiers::write_svm_res(const string &fileName,String classe,double thresh_train, double thresh_test ,double gamma, double temps_calc, double * conf  ,double * conf1, double AUC)
+	{
+	std::ofstream out(fileName.c_str(),ios::out |ios::app);
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+
+	out <<"class : "<<classe << "thresholdtrain -threshold-test" << thresh_train<< "-"<<thresh_test <<"\n gamma : "<< gamma <<"\n  temps de calcul pour l'apprentissage : " <<temps_calc <<" sec \n      classe     outlier " << "\n        " << conf[0] <<"          "<<conf[1]<< "\n        " << conf1[0] <<"         "<<conf1[1]<<"\n";
+	if(AUC!=0)
+	out <<" AUC : "<<AUC<<"\n";
+	out.close();
+	}
+
+	void Fichiers::write_svm_res(const string &fileName,String classe,double thresh_train, double thresh_test ,double gamma, double temps_calc , double temps_test, double * conf  ,double * conf1, double AUC)
+	{
+	std::ofstream out(fileName.c_str(),ios::out |ios::app);
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+
+	out <<"class : "<<classe << "thresholdtrain -threshold-test" << thresh_train<< "-"<<thresh_test <<"\n gamma : "<< gamma <<"\n  temps de calcul pour l'apprentissage : " <<temps_calc <<" sec \n temps de calcul pour le test " <<temps_test<<"sec \n      classe     outlier " << "\n        " << conf[0] <<"          "<<conf[1]<< "\n        " << conf1[0] <<"         "<<conf1[1]<<"\n";
+	if(AUC!=0)
+	out <<" AUC : "<<AUC<<"\n";
+	out.close();
+	cout<<fileName << "have been created"<<endl; 
+	}
+/// ecrire le temps de calcul pour kmean pour chaque classe 
+	void Fichiers::write_calc_time_kmean(const string &fileName , string classe,string categ,int img_number , float avg_time_kmean)
+	{
+		std::ofstream out(fileName.c_str(),ios::out |ios::app);
+		if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+		out << " class : " << classe << "\n category  : " <<categ << "\n nombre d'image : " <<img_number << " img \n Pour une image (2 fichiers : un pour Harris_laplace , un pour laplacian) \n Moyen temps de k_mean est : "<<avg_time_kmean<<"\n";
+		out.close();
+	}
+
+/// ecrire les donnees en Mat dans un ASCII txt fichiers 
+void Fichiers::write_ASCII_txt(const string &fileName,Mat data)
+{
+	std::ofstream out(fileName.c_str());
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	
+	for(int i=0;i<data.rows;i++)
+	{
+		out <<"\n\n center ("<< i << ") : \n "<<endl;
+		//out<<"\n";
+		for(int j=0;j<data.cols;j++)
+		{
+			out <<data.at<float>(i,j) << " ";
+		}
+	}
+
+	cout<<" the file " << fileName<<" created."<<endl;
+	out.close();
+}
+/// ecrire les donnees dans un fichier .txt
+void Fichiers::write_txt(const string &name, vector< vector < float >> &data )
+{
+	std::ofstream out(name.c_str());
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	
+	for(int i=0;i < data.size();i++)
+	 {
+		
+		for(int j=0;j < data.at(i).size();j++)
+		{
+			out <<data[i][j] << " ";
+		}
+		 out << "\n";
+	 }
+
+	cout<<" the file " << name<<" created.\n";
+	out.close();
+}
+/// ecrire dans un fichiers en mode append a partir de Mat 
+void Fichiers::App_txt (const string &fileName,Mat data)
+{
+	std::ofstream out(fileName.c_str(),ios::out |ios::app);
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+
+	for(int i=0;i<data.rows;i++)
+	{		
+		
+		for(int j=0;j<data.cols;j++)
+		{
+			out <<data.at<float>(i,j) << " ";
+		}
+		out<<"\n";
+	}
+
+	cout<<" the file " << fileName<<" created."<<endl;
+	out.close();
+}
+/// ecrire dans un fichiere en mode append a partir de CvMat* 
+void Fichiers::App_txt (const string &fileName,CvMat* data)
+{
+	std::ofstream out(fileName.c_str(),ios::out |ios::app);
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+
+	for(int i=0;i<data->rows;i++)
+	{		
+		
+		for(int j=0;j<data->cols;j++)
+		{
+			out <<cvmGet(data,i,j) << " ";
+		}
+		out<<"\n";
+	}
+
+	cout<<" the file " << fileName<<" created."<<endl;
+	out.close();
+}
+////// ecrire dans un fichiere en mode append a partir de vecteur de bins + le temps de calcul
+void Fichiers::App_ASCII_txt (const string &fileName,vector<bins>& data, string img_name , float temps_calcul)
+{
+	std::ofstream out(fileName.c_str(),ios::out |ios::app);
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	out << img_name <<"\n";
+	for(int i=0;i<data.size();i++)
+	{		
+		
+	out <<data[i].get_cluster_freq() << " ";
+				
+	}
+	out<<"\n";
+	cout<<" the file " << fileName<<" created."<<endl;
+	out.close();
+}
+/// ecrire les donnees de data ( vecteur of structures ) et le sauvegarder en ASCII txt fichiers 
+
+void Fichiers:: write_ASCII_txt(const string& fileName ,std::vector<vector<bins>>&  data )
+{
+
+	std::ofstream out(fileName.c_str());
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	
+	for(int i=0;i < data.size();i++)
+	{
+
+		out <<"\n\n image ("<< i << ") : \n "<<endl;
+		
+		for(int j=0;j < data.at(i).size();j++)
+		{
+			
+			out <<data[i][j].get_cluster_freq()<< " " ;
+		}
+	}
+
+	cout<<" the file " << fileName<<" created."<<endl;
+
+	out.close();
+}
+/// write in .txt file from a map pf vectors 
+void Fichiers::write_txt_map(const string & name ,std::map<unsigned int,vector<vector<float>> >& data)
+	{
+		
+		std::ofstream out (name.c_str());
+		if(!out)
+		{
+			cout <<"\n ERROR:file could not be opened.";
+		}
+
+		for( map<unsigned int,vector<vector<float>> >::iterator iter = data.begin(); iter != data.end(); ++iter ) 
+		{
+			
+			 vector<vector<float>>tempVec = (*iter).second;
+			 int key=(*iter).first;
+			 //out <<key;
+			for(unsigned i=0;i < tempVec.size();i++)
+			 {
+		 
+			for(unsigned j=0;j < tempVec.at(i).size();j++)
+				{
+					out <<tempVec[i][j] << " ";
+				}
+			 out << "\n";
+			}
+
+		}
+		
+		cout<<" the file " << name<<" created.";
+		out.close();
+	}
+
+/// ecrire les donnees dans le vecteur of structures data et le suvegarder dans arff fichiers ( format de fichiers utilises par weka )
+void Fichiers::write_arff (const string& fileName ,std::vector<vector<bins>>&  data  ,const string& Class )
+{
+	std::ofstream out(fileName.c_str());
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	out <<"@RELATION histogrammes"<<endl;
+//	out <<"@attribute bag relational\n";
+	cout <<endl;
+
+		for(int j=0;j < data.at(0).size();j++)
+		{
+	out <<"@ATTRIBUTE att"<<j<<"   NUMERIC"<<endl;
+		}
+	
+	//out<<"@end bag\n";
+
+	out <<"@ATTRIBUTE class     {Cars,Bikes,Moto,Person}\n\n";
+
+	out <<"  @DATA\n";
+
+	for(int i=0;i < data.size();i++)
+	{
+		for(int j=0;j < data.at(i).size();j++)
+		{
+			
+			out <<data[i][j].get_cluster_freq()<< "," ;
+		}
+		out <<Class<<endl;
+	}
+
+	cout<<" the file " << fileName<<" created."<<endl;
+	out.close();
+}
+void Fichiers::readLine(std::string line) 
+{
+	std::vector<std::string> strs;
+	boost::split(strs, line, boost::is_any_of(","));
+
+	for(int ii=0; ii < (int)strs.size() - 1; ii++)
+	{
+		data.push_back(Util::fromString<float>(strs[ii]));
+	}
+	this->className=strs[strs.size()-1];
+
+}
+/*
+ * Getters
+ */
+std::string Fichiers::getClassName() const { return className; }
+std::vector<float> Fichiers::getData() const { return data; }
+
+/*
+ * Lecture d'un fichier ARFF
+ */
+void Fichiers::readARFF(std::string ARFFFileName)
+{
+	static bool flag=false;
+	std::string s="";
+	std::ifstream fichier ( ARFFFileName.c_str() , std::ifstream::in );
+
+	// Passer le debut du fichier ARFF
+	// jusqu'a la zone DATA
+	boost::to_upper(s);
+	
+	while(s!="@DATA")	fichier >> s;
+
+	/// Lecture du fichier
+	/////////////////////////
+	while(fichier.good())
+	{
+		/// Lecture des echantillons
+		///////////////////////////
+		fichier >> s;
+		readLine(s);
+		std::vector<float> data = this->getData();
+
+		/// Lors de la premiere lecture, initialisation de la taille des donnees
+		///////////////////////////////////////////////////////////////////////
+		if (!flag) { flag=true; dat.set_col(this->cols()); }
+
+		/// Concatener les donnees et le noms de classes
+		///////////////////////////////////////////////
+		dat.getVectors().insert(dat.getVectors().end(),data.begin(), data.end());
+		dat.getClasses().push_back(this->getClassName());
+
+		/// Recuperation des noms de classes
+		///////////////////////////////////
+		if (!Util::contains(dat.getClasseNames(),this->getClassName()))
+		{
+			dat.getClasseNames().push_back(this->getClassName());
+		}
+	}
+	/// Formation des equivalents numeriques des noms de classes
+	///////////////////////////////////////////////////////////
+	for(int i=0;i<(int)dat.getClasses().size();i++)
+	{
+		dat.getClasseNumbers().push_back(dat.classNumber(dat.get_className_by_indice(i)));
+	}
+	
+}
+/// combiner plusierus descripteurs dans un seule 
+void Fichiers::merge_descripteurs(std::vector<vector<float>>& vec1,std::vector<vector<float>>& vec2,std::vector<vector<float>>&vec3,std::vector<vector<float>>&total_vec)
+{
+	total_vec.insert(total_vec.end(),vec1.begin(),vec1.end());
+	total_vec.insert(total_vec.end(),vec2.begin(),vec2.end());
+	total_vec.insert(total_vec.end(),vec3.begin(),vec3.end());
+
+}
+/// ecrire dans un arff file format 
+void Fichiers::write_arff(const string &fileName, CvMat* data , CvMat*resp )
+{
+	std::ofstream out(fileName.c_str());
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	
+	out <<"@RELATION histogrammes"<<endl;
+
+	cout <<endl;
+
+		for(int j=0;j<data[0].cols;j++)
+		{
+	   out <<"@ATTRIBUTE att"<<j<<"   NUMERIC"<<endl;
+		}
+	
+
+
+		out <<"@ATTRIBUTE class     {Cars,Bikes,Moto,Person}\n\n";
+
+	out <<"  @DATA\n";
+
+	for(int i=0;i<data->rows;i++)
+	{
+		for(int j=0;j<data->cols;j++)
+		{
+			
+			out <<cvmGet(data,i,j)<< "," ;
+			
+		}
+		switch ((int)cvmGet(resp,i,0))
+			{
+			case 1 :
+				{
+				 out <<"Bikes"<<endl;
+				 break;
+				}
+			case 2:
+				{
+				out<<"Cars"<<endl;
+				break;
+				}
+			case 3:
+				{
+				out<<"Person"<<endl;
+				break;
+				}
+			case 4:
+				out<<"Moto"<<endl;
+			}
+		
+	}
+
+	
+
+	cout<<" the file " << fileName<<" created." <<endl;;
+	out.close();
+
+}
+/// ecrire dans un fichier du format  csv 
+void Fichiers::write_csv_File(const string &fileName, vector <roc_row> table_roc)
+{
+	std::ofstream out(fileName.c_str());
+	if(!out)
+	{
+		cout <<"\n ERROR:file could not be opened.";
+	}
+	out << "donnee pour roc " <<"\n";
+	out <<"threshold"<<";"<<"FPr"<<";"<<"TPr"<<"\n";
+	for(int i=table_roc.size()-1;i>=0;i--)
+	{
+		
+	    out <<table_roc[i].get_threshold()<< ";"<<table_roc[i].get_FP_rate()<<";"<< table_roc[i].get_TP_rate()<<"\n" ;	
+		
+	}
+	cout<<" the file " << fileName<<" created."<<endl;
+	out.close();
+
+}
